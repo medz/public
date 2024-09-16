@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "sponsorkit": "^0.15.5"
+  }
+}
