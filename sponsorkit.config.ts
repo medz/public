@@ -40,9 +40,7 @@ export default defineConfig({
               oneTime: e.isOneTime,
             },
           }))
-          .sort((a, b) => b.tier.amount - b.tier.amount),
-        null,
-        2
+          .sort((a, b) => b.tier.amount - b.tier.amount)
       )
     );
   },

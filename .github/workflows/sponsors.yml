@@ -20,6 +20,7 @@ jobs:
           SPONSORKIT_GITHUB_LOGIN: medz
       - id: changed
         run: |
+          git checkout bun.lockb
           if [ -z "$(git status -s)"]; then
             echo "value=1" >> $GITHUB_OUTPUT
           else
