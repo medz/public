@@ -19,4 +19,4 @@ jobs:
           SPONSORKIT_GITHUB_TOKEN: ${{ secrets.SPONSORKIT_GITHUB_TOKEN }}
           SPONSORKIT_GITHUB_LOGIN: medz
       - id: changed
-        # run: echo "value=${TAG}" >> "$GITHUB_OUTPUT"
+        run: echo "value=$(git diff --name-only)" >> $GITHUB_OUTPUT
