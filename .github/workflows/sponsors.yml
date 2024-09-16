@@ -19,14 +19,12 @@ jobs:
           SPONSORKIT_GITHUB_TOKEN: ${{ secrets.SPONSORKIT_GITHUB_TOKEN }}
           SPONSORKIT_GITHUB_LOGIN: medz
       - id: changed
+        name: Has Changed
         run: |
           git checkout bun.lockb
-          if [ -z "$(git status -s)"]; then
-            echo "value=1" >> $GITHUB_OUTPUT
-          else
-            echo "value=0" >> $GITHUB_OUTPUT
-          fi
+          echo "$(git diff --name-only)" >> $GITHUB_OUTPUT
       - if: ${{ steps.changed.outputs.value }}
+        name: Commit & Push
         run: |
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
           git config --local user.name "${{ github.actor }}"
