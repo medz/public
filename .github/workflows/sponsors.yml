@@ -19,4 +19,16 @@ jobs:
           SPONSORKIT_GITHUB_TOKEN: ${{ secrets.SPONSORKIT_GITHUB_TOKEN }}
           SPONSORKIT_GITHUB_LOGIN: medz
       - id: changed
-        run: echo "value=$(git diff --name-only)" >> $GITHUB_OUTPUT
+        run: |
+          if [ -z "$(git status -s)"]; then
+            echo "value=1" >> $GITHUB_OUTPUT
+          else
+            echo "value=" >> $GITHUB_OUTPUT
+          fi
+      - if: ${{ steps.changed.outputs.value }}
+        run: |
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --local user.name "${{ github.actor }}"
+          git add .
+          git commit -m "chore: update sponsors [skip ci]" --all -s
+          git push
