@@ -2,6 +2,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
+    "@types/bun": "^1.1.9",
     "sponsorkit": "^0.15.5"
   }
 }
