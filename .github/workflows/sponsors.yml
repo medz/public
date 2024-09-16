@@ -18,3 +18,5 @@ jobs:
         env:
           SPONSORKIT_GITHUB_TOKEN: ${{ secrets.SPONSORKIT_GITHUB_TOKEN }}
           SPONSORKIT_GITHUB_LOGIN: medz
+      - id: changed
+        # run: echo "value=${TAG}" >> "$GITHUB_OUTPUT"
