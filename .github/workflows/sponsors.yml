@@ -23,7 +23,7 @@ jobs:
           if [ -z "$(git status -s)"]; then
             echo "value=1" >> $GITHUB_OUTPUT
           else
-            echo "value=" >> $GITHUB_OUTPUT
+            echo "value=0" >> $GITHUB_OUTPUT
           fi
       - if: ${{ steps.changed.outputs.value }}
         run: |
