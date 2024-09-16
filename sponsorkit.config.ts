@@ -2,10 +2,6 @@ import fs from "node:fs/promises";
 import { defineConfig } from "sponsorkit";
 
 export default defineConfig({
-  github: {
-    login: "medz",
-    type: "user",
-  },
   cacheFile: ".sponsorkit/cache.json",
   outputDir: ".",
   formats: ["svg", "png"],
