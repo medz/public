@@ -22,7 +22,7 @@ jobs:
         name: Has Changed
         run: |
           git checkout bun.lockb
-          echo "value=$(git diff --name-only)" >> $GITHUB_OUTPUT
+          echo "value=$(git diff --name-only | grep -c sponsors.json)" >> $GITHUB_OUTPUT
       - if: ${{ steps.changed.outputs.value }}
         name: Commit & Push
         run: |
