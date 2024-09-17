@@ -26,7 +26,7 @@ export default defineConfig({
         sponsors
           .filter((e) => e.privacyLevel !== "PRIVATE")
           .map((e) => ({
-            name: e.sponsor.name,
+            name: e.sponsor.name ?? e.sponsor.login,
             ref: e.provider,
             socials: {
               ...e.sponsor.socialLogins,
