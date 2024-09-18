@@ -13,17 +13,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
+      - id: prev
+        run: echo "value=${{ hashFiles("**/sponsors.*") }}" >> $GITHUB_OUTPUT
       - run: bun install
       - run: bun sponsorkit
         env:
           SPONSORKIT_GITHUB_TOKEN: ${{ secrets.SPONSORKIT_GITHUB_TOKEN }}
           SPONSORKIT_GITHUB_LOGIN: medz
-      - id: changed
-        name: Has Changed
-        run: |
-          git checkout bun.lockb
-          echo "value=$(git diff --name-only | grep -c sponsors.json)" >> $GITHUB_OUTPUT
-      - if: ${{ steps.changed.outputs.value }}
+      - id: next
+        run: echo "value=${{ hashFiles("**/sponsors.*") }}" >> $GITHUB_OUTPUT
+      - if: ${{ steps.prev.outputs.value != steps.next.outputs.value }}
         name: Commit & Push
         run: |
           git config --local user.email "${{ github.actor }}@users.noreply.github.com"
