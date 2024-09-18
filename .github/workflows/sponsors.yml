@@ -14,14 +14,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
       - id: prev
-        run: echo "value=${{ hashFiles("**/sponsors.*") }}" >> $GITHUB_OUTPUT
+        run: echo "value=${{ hashFiles('sponsors.*') }}" >> $GITHUB_OUTPUT
       - run: bun install
       - run: bun sponsorkit
         env:
           SPONSORKIT_GITHUB_TOKEN: ${{ secrets.SPONSORKIT_GITHUB_TOKEN }}
           SPONSORKIT_GITHUB_LOGIN: medz
       - id: next
-        run: echo "value=${{ hashFiles("**/sponsors.*") }}" >> $GITHUB_OUTPUT
+        run: echo "value=${{ hashFiles('sponsors.*') }}" >> $GITHUB_OUTPUT
       - if: ${{ steps.prev.outputs.value != steps.next.outputs.value }}
         name: Commit & Push
         run: |
