@@ -3,6 +3,6 @@
   "type": "module",
   "dependencies": {
     "@types/bun": "^1.1.9",
-    "sponsorkit": "^16.0.0"
+    "sponsorkit": "^17.0.0"
   }
 }
